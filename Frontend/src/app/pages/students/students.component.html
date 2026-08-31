@@ -1,0 +1,56 @@
+<div class="etudiants-container">
+  <h1>Gestion des étudiants</h1>
+
+  <mat-card class="form-card">
+    <h2>{{ editingId ? 'Modifier' : 'Ajouter' }} un étudiant</h2>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Prénom</mat-label>
+        <input matInput formControlName="firstName" data-cy="etu-firstName" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="lastName" data-cy="etu-lastName" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" data-cy="etu-email" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Classe</mat-label>
+        <input matInput formControlName="classe" data-cy="etu-classe" />
+      </mat-form-field>
+      <div class="actions">
+        <button mat-raised-button color="primary" type="submit" data-cy="etu-submit">
+          {{ editingId ? 'Mettre à jour' : 'Ajouter' }}
+        </button>
+        <button mat-button type="button" *ngIf="editingId" (click)="resetForm()">Annuler</button>
+      </div>
+    </form>
+  </mat-card>
+
+  <table class="etu-table" data-cy="etu-table">
+    <thead>
+      <tr><th>Prénom</th><th>Nom</th><th>Email</th><th>Classe</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of students" data-cy="etu-row">
+        <td>{{ e.firstName }}</td>
+        <td>{{ e.lastName }}</td>
+        <td>{{ e.email }}</td>
+        <td>{{ e.classe }}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="edit(e)" data-cy="etu-edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="remove(e.id)" data-cy="etu-delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="students.length === 0">
+        <td colspan="5" class="empty">Aucun étudiant.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

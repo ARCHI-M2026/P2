@@ -1,0 +1,8 @@
+.etudiants-container { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+.form-card { padding: 16px; margin-bottom: 24px; display: flex; flex-direction: column; }
+.form-card form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.actions { grid-column: 1 / -1; display: flex; gap: 8px; }
+.etu-table { width: 100%; border-collapse: collapse; }
+.etu-table th, .etu-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+.etu-table th { background: #f4f7fa; }
+.empty { text-align: center; color: #777; }
