@@ -1,0 +1,12 @@
+{
+  "reporter": ["html", "text", "text-summary"],
+  "report-dir": "coverage-e2e",
+  "exclude": ["node_modules/**", "cypress/**", "**/*.spec.ts", "**/*.cy.ts"],
+  "include": ["src/**/*.ts"],
+  "check-coverage": true,
+  "temp-dir": ".nyc_output",
+  "lines": 80,
+  "functions": 80,
+  "branches": 80,
+  "statements": 80
+}

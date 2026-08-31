@@ -6,6 +6,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
@@ -30,6 +31,7 @@ public class JwtService {
 
     // Génère un token JWT pour l'utilisateur authentifié.
     public String generateToken(UserDetails userDetails) {
+        Assert.notNull(userDetails, "UserDetails must not be null");
         Date now = new Date();
         Date expiry = new Date(now.getTime() + expirationMs);
         return Jwts.builder()

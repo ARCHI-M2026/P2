@@ -34,8 +34,8 @@ public class UserService {
     }
 
     public String login(String login, String password) {
-        Assert.notNull(login, "Login must not be null");
-        Assert.notNull(password, "Password must not be null");
+        Assert.hasText(login, "Login must not be null or empty");
+        Assert.hasText(password, "Password must not be null or empty");
         Optional<User> user = userRepository.findByLogin(login);
         if (user.isPresent() && passwordEncoder.matches(password, user.get().getPassword())) {
             return jwtService.generateToken(user.get());
